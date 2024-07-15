@@ -1,0 +1,173 @@
+.posts-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+}
+
+.post {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  width: 60%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  flex-direction: column;
+  border: 1px solid #ccc;
+  padding: 10px;
+  background-color: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.username {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.content {
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.timestamp {
+  font-size: 15px;
+  color: #777;
+  text-align: right;
+  margin-top: 10px;
+}
+
+.posts-page {
+  max-width: 930px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.post-form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.post-input {
+  padding: 20px;
+  font-size: 16px;
+  border: 1px solid #070707;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  resize: none;
+}
+
+.submit-btn {
+  padding: 8px 16px;
+  width: 20%;
+  margin-left: auto;
+  background-color: #1da1f2;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.submit-btn:disabled {
+  background-color: #aaa;
+}
+
+.posts-container {
+  margin-top: 20px;
+}
+
+.post {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.username {
+  font-weight: bold;
+}
+
+.timestamp {
+  color: #777;
+  font-size: 0.85em;
+}
+
+.repost-btn {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.repost-btn:hover {
+  background-color: #0056b3;
+}
+
+.character-count {
+  font-family: "Arial", sans-serif;
+  font-size: 0.8rem;
+  color: #666;
+  margin-right: 90%;
+  padding-top: 5px;
+}
+
+.search-bar {
+  margin-bottom: 20px;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  border: 2px solid #ccc;
+  border-radius: 20px;
+  padding: 5px;
+}
+
+.search-input {
+  flex-grow: 1;
+  border: none;
+  padding: 10px 15px;
+  font-size: 16px;
+  border-radius: 20px;
+  outline: none;
+}
+
+.search-icon-btn {
+  background: none;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.sort-select {
+  font-size: 1rem;
+  padding: 0.5em 1em;
+  border: 2px solid #ccc;
+  border-radius: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  appearance: none;
+  cursor: pointer;
+  transition: border-color 0.3s ease-in-out;
+}
+
+.sort-select:hover,
+.sort-select:focus {
+  border-color: #0056b3;
+  outline: none;
+}
+
+.sort-select {
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2212%22%20height%3D%2212%22%20viewBox%3D%220%200%2012%2012%22%20fill%3D%22none%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M6.00049%201.41421L10.2427%205.65642L9.53616%206.363L6.00049%202.82732L2.46484%206.363L1.7583%205.65642L6.00049%201.41421Z%22%20fill%3D%22%23C2C2C2%22/%3E%3C/svg%3E%0A");
+  background-repeat: no-repeat;
+  background-position: right 0.8em top 50%, 0 0;
+  background-size: 12px;
+}
+
+.sort-select:focus {
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+}
