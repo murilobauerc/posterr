@@ -1,0 +1,19 @@
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10vh;
+  font-size: 2rem;
+  color: #333;
+  margin: 0;
+  background-color: #f4f4f4;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+div {
+  text-align: center;
+}
