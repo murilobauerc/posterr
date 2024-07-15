@@ -1,0 +1,9 @@
+_build/
+deps/
+.elixir_ls/
+.git
+.github
+.gitignore
+.editorconfig
+README.md
+docker-compose*
