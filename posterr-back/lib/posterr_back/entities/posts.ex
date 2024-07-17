@@ -100,7 +100,7 @@ defmodule PosterrBack.Entities.Posts do
   end
 
   @doc """
-  Lists all posts with sorting and pagination.
+  Lists all posts with pagination based on the sorting type.
   """
   @spec list_posts_sorted(String.t(), integer, integer) :: [Post.t()]
   def list_posts_sorted("latest", page_number, page_size),
@@ -109,7 +109,10 @@ defmodule PosterrBack.Entities.Posts do
   @spec list_posts_sorted(String.t(), integer, integer) :: [Post.t()]
   def list_posts_sorted("trending", page_number, page_size) do
     from(p in Post,
-      order_by: [desc: p.inserted_at],
+      left_join: r in assoc(p, :reposts),
+      group_by: p.id,
+      order_by: [desc: count(r.id)],
+      preload: [:user, :reposts],
       offset: ^((page_number - 1) * page_size),
       limit: ^page_size
     )

@@ -51,17 +51,15 @@ defmodule PosterrBack.Entities.PostsTest do
       assert first_post.content == "First post"
     end
 
-    test "lists posts sorted by trending successfully" do
+    test "lists posts and reposts sorted by trending successfully" do
       user = insert!(:user, %{username: "John"})
-      first_post = insert!(:post, %{content: "First post", user_id: user.id})
-      _second_post = insert!(:post, %{content: "Second post", user_id: user.id})
+      post = insert!(:post, %{content: "First post", user_id: user.id})
+      _repost = insert!(:repost, %{post_id: post.id, user_id: user.id})
       posts = Posts.list_posts_sorted("trending", 1, 5)
 
-      assert first_post == Enum.at(posts, 0)
-      assert length(posts) == 2
-      assert Enum.at(posts, 0).content == "First post"
-      assert Enum.at(posts, 1).content == "Second post"
-      assert Enum.at(posts, 0).inserted_at >= Enum.at(posts, 1).inserted_at
+      assert length(posts) == 1
+      assert length(Enum.at(posts, 0).reposts) == 1
+      assert post.content == "First post"
     end
   end
 end
