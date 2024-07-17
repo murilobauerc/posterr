@@ -28,6 +28,8 @@ defmodule PosterrBackWeb.ConnCase do
       import Plug.Conn
       import Phoenix.ConnTest
       import PosterrBackWeb.ConnCase
+
+      alias PosterrBackWeb.Router.Helpers, as: Routes
     end
   end
 

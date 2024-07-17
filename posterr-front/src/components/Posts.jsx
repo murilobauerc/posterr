@@ -28,9 +28,7 @@ const Posts = () => {
 
   const handleSortChange = (event) => {
     const value = event.target.value;
-    if (searchKeyword || value !== "latest") {
-      setSortOption(value);
-    }
+    setSortOption(value);
   };
 
   const handleRepost = () => {
@@ -96,7 +94,7 @@ const Posts = () => {
             type="text"
             value={searchKeyword}
             onChange={handleSearchChange}
-            placeholder="Search posts"
+            placeholder="Search content posts by matching exact content..."
             className="search-input"
           />
           <button className="search-icon-btn">
@@ -119,20 +117,33 @@ const Posts = () => {
       ) : (
         <div className="posts-container">
           {data?.data.map((post) => (
-            <div key={post.id} className="post">
-              <p className="username">{post.username}</p>
-              <p className="content">{post.content}</p>
-              <button
-                onClick={() => openRepostModal(post.id)}
-                className="repost-btn"
-                disabled={repostMutation.isLoading}
-              >
-                Repost
-              </button>
-              <p className="timestamp">
-                {new Date(post.inserted_at).toLocaleString()}
-              </p>
-            </div>
+            <>
+              <div key={post.id} className="post">
+                <p className="username">{post.username}</p>
+                <p className="content">{post.content}</p>
+                <button
+                  onClick={() => openRepostModal(post.id)}
+                  className="repost-btn"
+                  disabled={repostMutation.isLoading}
+                >
+                  Repost
+                </button>
+                <p className="timestamp">
+                  {new Date(post.inserted_at).toLocaleString()}
+                </p>
+              </div>
+              {post.reposts &&
+                post.reposts.map((repost) => (
+                  <div key={repost.id} className="post reposted">
+                    <p className="username">{repost.username}</p>
+                    <p className="content">{repost.content}</p>
+                    <p className="timestamp">
+                      {new Date(repost.inserted_at).toLocaleString()}
+                    </p>
+                    <p className="repost-label">Reposted</p>
+                  </div>
+                ))}
+            </>
           ))}
         </div>
       )}
