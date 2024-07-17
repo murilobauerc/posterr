@@ -30,10 +30,14 @@ defmodule Repo.Seeds do
     changeset = User.changeset(%User{}, user_params)
 
     case Repo.insert(changeset) do
-      {:ok, user} -> handle_insert(user)
+      {:ok, user} ->
+        handle_insert(user)
+
       {:error, %Ecto.Changeset{errors: [{:username, _}]}} ->
         create_user()
-      {:error, _} = error -> handle_insert(error)
+
+      {:error, _} = error ->
+        handle_insert(error)
     end
   end
 

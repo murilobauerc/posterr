@@ -12,7 +12,7 @@ defmodule PosterrBack.Services.PostService do
          {:ok, username} <- Users.get_username(user_id),
          true <- count < 5,
          {:ok, post} <- Posts.create(params, user_id) do
-              {:ok, build_post_response(post, username)}
+      {:ok, build_post_response(post, username)}
     else
       {:error, _} = error -> error
       false -> {:error, :post_daily_limit_exceeded}

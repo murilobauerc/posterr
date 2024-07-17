@@ -14,7 +14,8 @@ defmodule PosterrBack.Services.RepostService do
           {:error, changeset} -> {:error, changeset}
         end
 
-      _repost -> {:error, :post_already_reposted}
+      _repost ->
+        {:error, :post_already_reposted}
     end
   end
 end
