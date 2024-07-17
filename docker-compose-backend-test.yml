@@ -1,0 +1,25 @@
+services:
+  db:
+    image: postgres:latest
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+  backend-test:
+    build: ./posterr-back
+    volumes:
+      - ./posterr-back:/app
+    depends_on:
+      - db
+    environment:
+      MIX_ENV: test
+    command: >
+      sh -c "
+        mix deps.get &&
+        mix compile &&
+        mix ecto.create &&
+        mix ecto.migrate &&
+        mix test &&
+        echo 'Tests successfully finished'
+      "
+
+volumes:
+  postgres_data:
