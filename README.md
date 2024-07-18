@@ -26,7 +26,7 @@ To run the application, ensure you have the following installed:
    - Run the following command at the root of the project to build the Docker image (if not already built) and start the services:
 
      ```sh
-     docker-compose up --build
+     docker compose up --build
      ```
 
    - This command initializes the database, run the seeds with default users automatically, starts the web server and backend server.
@@ -40,7 +40,7 @@ To run the application, ensure you have the following installed:
    - To run the tests you can run the following command at the root of the project:
 
      ```sh
-     docker-compose -f docker-compose-backend-test.yml up --build backend-test
+     docker compose -f docker-compose-backend-test.yml up --build backend-test
      ```
 
 4. **Optional - Running tests for frontend:**
@@ -48,7 +48,7 @@ To run the application, ensure you have the following installed:
    - To run the integration tests you can run the following command at the root of the project:
 
      ```sh
-     docker-compose -f docker-compose-frontend-test.yml up --build
+     docker compose -f docker-compose-frontend-test.yml up --build
      ```
 
 ## Implementation details
