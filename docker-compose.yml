@@ -1,0 +1,45 @@
+services:
+  db:
+    image: postgres:latest
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: posterr_back_dev
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+
+  backend:
+    build: ./posterr-back
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./posterr-back:/app
+    depends_on:
+      - db
+    environment:
+      DB_HOST: db
+      DB_USER: postgres
+      DB_PASS: postgres
+      DB_NAME: posterr_back_dev
+    command: >
+      sh -c "
+        mix deps.get &&
+        mix compile &&
+        mix ecto.drop &&
+        mix ecto.create &&
+        mix ecto.migrate &&
+        mix run priv/repo/seeds.exs &&
+        mix phx.server
+      "
+
+  frontend:
+    build: ./posterr-front
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:

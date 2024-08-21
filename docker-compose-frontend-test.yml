@@ -1,0 +1,8 @@
+services:
+  frontend-tests:
+    build:
+      context: ./posterr-front
+    volumes:
+      - ./posterr-front:/app
+    command: >
+      sh -c "npm install --legacy-peer-deps && npm test"
